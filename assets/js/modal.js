@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ---------------------------------------------
-  //  USER編集モーダル
+  //  ユーザー編集モーダル
   // ---------------------------------------------
   var editUserBtns = document.querySelectorAll(".edit-user-btn");
   if (editUserBtns) {

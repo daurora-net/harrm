@@ -3,8 +3,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     <?= isset($isIndex) && $isIndex
-      ? 'HDD Rental'
-      : 'HDD Rental | ' . ($pageTitle ?? 'Default Title'); ?>
+      ? 'harrm'
+      : 'harrm | ' . ($pageTitle ?? 'Default Title'); ?>
   </title>
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">

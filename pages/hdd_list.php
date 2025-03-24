@@ -7,7 +7,7 @@ $currentUserRole = $stmtRole->fetchColumn();
 
 // role=1,2のみアクセス可能
 if (!in_array($currentUserRole, [1, 2])) {
-  header("Location: /billing_list");
+  header("Location: /harrm/billing_list");
   exit();
 }
 $stmt = $conn->prepare("

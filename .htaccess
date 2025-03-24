@@ -1,0 +1,42 @@
+# キャッシュ設定
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
+
+# URLリライト設定
+RewriteEngine On
+
+# .php拡張子を表示させない
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# index.phpを省略
+DirectoryIndex index.php
+
+# /hdd_list遷移設定
+# /hdd_list にアクセスした場合、内部的に /pages/hdd_list.php にリダイレクト
+# /pages/hdd_list.php に直接アクセスした場合、URLを /hdd_list にリダイレクト
+RewriteRule ^hdd_list$ /harrm/pages/hdd_list.php [L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /harrm/pages/hdd_list.php
+RewriteRule ^hdd-rental/pages/hdd_list.php$ /hdd_list [R=301,L]
+
+# /rental_list遷移設定
+# /rental_list にアクセスした場合、内部的に /pages/rental_list.php にリダイレクト
+# /pages/rental_list.php に直接アクセスした場合、URLを /rental_list にリダイレクト
+RewriteRule ^rental_list$ /harrm/pages/rental_list.php [L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /harrm/pages/rental_list.php
+RewriteRule ^hdd-rental/pages/rental_list.php$ /rental_list [R=301,L]
+
+# /user_list遷移設定
+# /user_list にアクセスした場合、内部的に /pages/user_list.php にリダイレクト
+# /pages/user_list.php に直接アクセスした場合、URLを /user_list にリダイレクト
+RewriteRule ^user_list$ /harrm/pages/user_list.php [L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /harrm/pages/user_list.php
+RewriteRule ^hdd-rental/pages/user_list.php$ /user_list [R=301,L]
+
+# /billing_list遷移設定
+# /billing_list にアクセスした場合、内部的に /pages/billing_list.php にリダイレクト
+# /pages/billing_list.php に直接アクセスした場合、URLを /billing_list にリダイレクト
+RewriteRule ^billing_list$ /harrm/pages/billing_list.php [L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /harrm/pages/billing_list.php
+RewriteRule ^hdd-rental/pages/billing_list.php$ /billing_list [R=301,L]

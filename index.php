@@ -7,7 +7,7 @@ $currentUserRole = $stmtRole->fetchColumn();
 
 // role=1,2のみアクセス可能
 if (!in_array($currentUserRole, [1, 2])) {
-  header("Location: /billing_list");
+  header("Location: /harrm/billing_list");
   exit();
 }
 ?>
@@ -26,7 +26,7 @@ include 'parts/head.php';
   <script>
     // SPサイズの場合 /rental_list へリダイレクト
     if (window.matchMedia("(max-width: 768px)").matches) {
-      window.location.href = '/rental_list';
+      window.location.href = '/harrm/rental_list';
     }
   </script>
   <?php

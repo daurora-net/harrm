@@ -21,14 +21,14 @@ if (isset($_GET['code'])) {
     // アラート表示後にリダイレクト
     echo "<script>
             alert('認証が完了しました');
-            window.location.href = '/';
+            window.location.href = '/harrm/';
         </script>";
     exit();
   } else {
     // 認証コードが無効または期限切れ
     echo "<script>
             alert('認証コードが無効または期限切れです。');
-            window.location.href = '/login.php';
+            window.location.href = '/harrm/login.php';
         </script>";
     exit();
   }
@@ -36,7 +36,7 @@ if (isset($_GET['code'])) {
   // 認証コードが提供されていない場合
   echo "<script>
         alert('認証コードが提供されていません。');
-        window.location.href = '/login.php';
+        window.location.href = '/harrm/login.php';
     </script>";
   exit();
 }

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // remember_tokenクッキーも削除
         setcookie('remember_token', '', time() - 3600, '/');
 
-        header("Location: /login");
+        header("Location: /harrm/login");
         exit();
       }
 

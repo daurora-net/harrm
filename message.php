@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-  header("Location: /");
+  header("Location: /harrm/");
   exit();
 }
 ?>
@@ -31,7 +31,7 @@ if (isset($_SESSION['username'])) {
     // verify.phpからのメッセージを受信し、トップページにリダイレクト
     window.addEventListener('message', function (event) {
       if (event.data === 'redirect_to_top') {
-        window.location.href = '/';
+        window.location.href = '/harrm/';
       }
     });
   </script>

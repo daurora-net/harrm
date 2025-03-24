@@ -1,5 +1,5 @@
 <?php
-$servername = "xs421360_harrm";
+$servername = "localhost";
 $username = "xs421360_harrm";
 $password = "password";
 $dbname = "xs421360_harrm";

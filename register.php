@@ -40,13 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //  メール内容
     // ---------------------------------------------
     // Recipients
-    $mail->setFrom('daurora.net@gmail.com', 'HDD Rental');
+    $mail->setFrom('daurora.net@gmail.com', 'harrm');
     $mail->addAddress($email, $username);
 
     // Content
     $mail->isHTML(true);
     $mail->Subject = 'メールアドレス認証';
-    $mail->Body = "HDD Rentalシステムに新規ユーザー登録されます。<br>以下のリンクをクリックして、認証を完了してください。<br><br><a href='https://xs421360.xsrv.jp/harrm/verify.php?code=$verification_code'>こちらをクリック</a>";
+    $mail->Body = "harrmシステムに新規ユーザー登録されます。<br>以下のリンクをクリックして、認証を完了してください。<br><br><a href='https://xs421360.xsrv.jp/harrm/verify.php?code=$verification_code'>こちらをクリック</a>";
     // ---------------------------------------------
 
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ---------------------------------------------
     $mail->send();
     $_SESSION['verification_message'] = 'メール認証用リンクを送信しました。メールを確認し、リンクをクリックしてアカウントを有効化してください。';
-    header("Location: /message.php");
+    header("Location: /harrm/message.php");
     exit();
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
