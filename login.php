@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         setcookie("remember_token", $token, time() + (86400 * 30), "/", "", false, true);
       }
 
-      header("Location: /hdd-rental/");
+      header("Location: /");
       exit();
     } else {
       $error_message = "メールアドレスが認証されていません。メールをご確認ください。";

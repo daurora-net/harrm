@@ -1,8 +1,8 @@
 <?php
-$servername = "mysql12007.xserver.jp";
-$username = "daurora_hdd";
-$password = "hddrental";
-$dbname = "daurora_hddrental";
+$servername = "xs421360_harrm";
+$username = "xs421360_harrm";
+$password = "password";
+$dbname = "xs421360_harrm";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);

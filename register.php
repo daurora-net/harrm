@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Content
     $mail->isHTML(true);
     $mail->Subject = 'メールアドレス認証';
-    $mail->Body = "HDD Rentalシステムに新規ユーザー登録されます。<br>以下のリンクをクリックして、認証を完了してください。<br><br><a href='https://daurora.xsrv.jp/hdd-rental/verify.php?code=$verification_code'>こちらをクリック</a>";
+    $mail->Body = "HDD Rentalシステムに新規ユーザー登録されます。<br>以下のリンクをクリックして、認証を完了してください。<br><br><a href='https://xs421360.xsrv.jp/harrm/verify.php?code=$verification_code'>こちらをクリック</a>";
     // ---------------------------------------------
 
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ---------------------------------------------
     $mail->send();
     $_SESSION['verification_message'] = 'メール認証用リンクを送信しました。メールを確認し、リンクをクリックしてアカウントを有効化してください。';
-    header("Location: /hdd-rental/message.php");
+    header("Location: /message.php");
     exit();
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

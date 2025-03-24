@@ -10,7 +10,7 @@ $currentUserRole = $stmtRole->fetchColumn();
 
 // role=3のみアクセス可能
 if ($currentUserRole != 3) {
-  header("Location: /hdd-rental/");
+  header("Location: /");
   exit();
 }
 

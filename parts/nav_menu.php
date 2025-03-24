@@ -17,7 +17,7 @@ $userRole = $stmt->fetchColumn();
       // 管理者 (role=1) および一般 (role=2) の場合はガントチャート、HDD管理、SCHEDULE を表示
       if (in_array($userRole, [1, 2])) { ?>
         <li class="pc list <?php echo (isset($activePage) && $activePage == 'index') ? 'active' : ''; ?>">
-          <a href="/hdd-rental/">
+          <a href="/">
             <span class="icon"><i class="fa-solid fa-house"></i></span>
           </a>
         </li>
@@ -52,7 +52,7 @@ $userRole = $stmt->fetchColumn();
       <?php } ?>
     </ul>
     <div class="nav-logout sp">
-      <a href="/hdd-rental/logout.php">LOGOUT
+      <a href="/logout.php">LOGOUT
         <span class="icon"><i class="fa-solid fa-sign-out"></i></span>
       </a>
       <div class="user-box">

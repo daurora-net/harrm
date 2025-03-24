@@ -63,7 +63,7 @@ $currentUserRole = $stmtRole->fetchColumn();
 
 // role=1,2のみアクセス可能
 if (!in_array($currentUserRole, [1, 2])) {
-  header("Location: /hdd-rental/billing_list");
+  header("Location: /billing_list");
   exit();
 }
 ?>
