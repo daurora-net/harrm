@@ -1,0 +1,41 @@
+@import '../base/variables';
+
+/*========= main ===============*/
+main {
+  width: calc(100% - 13%);
+  color: $main-text-color;
+}
+
+.container {
+  margin: 0 10% 0;
+  padding: 40px 0;
+}
+
+.header-container {
+  position: relative;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 100%
+  }
+
+  .container {
+    margin: 0 auto;
+    height: calc(100vh - 35px);
+    overflow: scroll;
+
+    h2 {
+      padding-bottom: 10px;
+    }
+  }
+}

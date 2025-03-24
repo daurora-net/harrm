@@ -1,0 +1,166 @@
+@import '../base/variables';
+
+body {
+  @extend .ibm-plex-sans-jp-regular;
+  background-color: #fcfcfc;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-y: hidden;
+}
+
+h2 {
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: .9rem !important;
+  padding: 6px 10px;
+  color: #393939;
+}
+
+input,
+select {
+  height: 35px;
+  line-height: calc(35px - 12px);
+}
+
+.flex {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+@media print {
+  @page {
+    // size: A4 landscape;
+    size: A4;
+    margin: 0;
+    // padding: 20px;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .table-scroll {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
+
+
+/*========= margin ===============*/
+.ml-10 {
+  margin-left: 10px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+/*========= width ===============*/
+.w-100px {
+  width: 100px;
+}
+
+.w-150px {
+  width: 150px;
+}
+
+.w-200px {
+  width: 200px;
+}
+
+.w-250px {
+  width: 250px;
+}
+
+.w-300px {
+  width: 300px;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+/*========= text ===============*/
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/*========= color ===============*/
+.bg-primary {
+  background-color: $primary-color;
+}
+
+.bg-brown {
+  background-color: $brown-color;
+}
+
+/*========= responsive ===============*/
+.pc {
+  display: block;
+}
+
+.sp {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .pc {
+    display: none !important;
+  }
+
+  .sp {
+    display: block !important;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 4px 7px;
+  }
+
+  .flex {
+    gap: 10px;
+  }
+}
+
+/*========= safari対応 ===============*/
+// カレンダーplaceholder非表示（必須項目）
+input[type="date"]:required:invalid::-webkit-datetime-edit,
+input[type="date"]:required:invalid::-webkit-datetime-edit-text,
+input[type="date"]:required:invalid::-webkit-datetime-edit-month-field,
+input[type="date"]:required:invalid::-webkit-datetime-edit-day-field,
+input[type="date"]:required:invalid::-webkit-datetime-edit-year-field {
+  opacity: 0;
+}
+
+input[type="date"]:required:valid::-webkit-datetime-edit,
+input[type="date"]:required:valid::-webkit-datetime-edit-text,
+input[type="date"]:required:valid::-webkit-datetime-edit-month-field,
+input[type="date"]:required:valid::-webkit-datetime-edit-day-field,
+input[type="date"]:required:valid::-webkit-datetime-edit-year-field {
+  opacity: 1;
+}
+
+// カレンダーplaceholder非表示（必須項目以外：js-date-fieldクラス付与必須）
+.js-date-field.is-empty::-webkit-datetime-edit,
+.js-date-field.is-empty::-webkit-datetime-edit-text,
+.js-date-field.is-empty::-webkit-datetime-edit-month-field,
+.js-date-field.is-empty::-webkit-datetime-edit-day-field,
+.js-date-field.is-empty::-webkit-datetime-edit-year-field {
+  opacity: 0;
+}

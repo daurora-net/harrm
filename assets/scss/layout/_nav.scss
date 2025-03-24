@@ -1,0 +1,218 @@
+aside {
+  width: 13%;
+  height: 100vh;
+  background-color: #a2a2a2;
+
+  nav.nav {
+    position: relative;
+    height: 100vh;
+    background-color: #a2a2a2;
+    border-left: 10px solid #a2a2a2;
+    overflow-x: hidden;
+    transition: all 0.5s;
+
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-top: 50px;
+      padding-left: 10px;
+
+      li {
+        list-style: none;
+        display: block;
+        position: relative;
+        width: 100%;
+        border-radius: 15px;
+
+        &:hover {
+          background-color: #898c8f5e;
+        }
+
+        &.active {
+          background-color: $body-color;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+
+          a {
+
+            &::before {
+              content: "";
+              position: absolute;
+              width: 30px;
+              height: 30px;
+              top: -30px;
+              right: 0;
+              border-radius: 50%;
+              box-shadow: 15px 15px 0 $body-color;
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              width: 30px;
+              height: 30px;
+              top: 50px;
+              right: 0;
+              border-radius: 50%;
+              box-shadow: 15px -15px 0 $body-color;
+            }
+
+            span {
+              color: #4a4a4a;
+            }
+          }
+        }
+
+        a {
+          display: block;
+          position: relative;
+          text-decoration: none;
+          width: 100%;
+          display: flex;
+          font-size: 13px;
+          padding-left: 15px;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          span {
+            color: #fff;
+
+            &.icon {
+              display: block;
+              min-width: 45px;
+              height: 50px;
+              line-height: 53px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .open-icon {
+    display: none;
+  }
+}
+
+.open-icon,
+.close-icon {
+  height: 48px;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  aside {
+    &#side-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100vh;
+      background-color: #fff;
+      transition: left 0.3s ease;
+      z-index: 1000;
+      color: #e5e5e5;
+
+      &.open {
+        left: 0;
+      }
+    }
+
+    nav.nav {
+      border-left: none;
+      overflow: hidden;
+
+      ul {
+        padding-top: 20px;
+        padding-left: 0;
+        padding-bottom: 20px;
+        margin: 10% auto;
+        text-align: center;
+        width: max-content;
+        position: relative;
+
+        li {
+
+          &:hover {}
+
+          &.active {
+            background-color: transparent;
+
+            a {
+
+              &::before {
+                content: none;
+              }
+
+              &::after {
+                content: none;
+              }
+
+              span {}
+            }
+          }
+
+          a {
+            padding-left: 0;
+            display: block;
+
+
+            &:hover {}
+
+            span {
+
+              &.icon {
+                @include fz(10);
+              }
+            }
+          }
+        }
+      }
+
+      .nav-logout {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 10% auto;
+        padding: 10%;
+        text-align: center;
+        background-color: #b8b8b8;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          @include fz(10);
+          display: flex;
+          justify-content: center;
+          gap: 5px;
+          align-items: center;
+        }
+
+        .user-box {
+          border: 1px solid #e9e9e9;
+          border-radius: 5px;
+          padding: 0 10px;
+          width: max-content;
+          margin: 25px auto;
+          @include fz(9);
+          height: 35px;
+          line-height: 35px;
+        }
+      }
+    }
+  }
+
+  .open-icon,
+  .close-icon {
+    height: 35px;
+    line-height: 38px;
+    font-size: unset;
+  }
+}

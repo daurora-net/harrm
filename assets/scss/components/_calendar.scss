@@ -1,0 +1,124 @@
+/*========= calendar ===============*/
+/* primarycolor : #fcfcfc */
+/* 透過primarycolor : #f5f5f542 */
+
+#calendar {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+#calendar .add-btn {
+  position: absolute;
+}
+
+.fc-license-message {
+  display: none;
+}
+
+.fc-event {
+  border-radius: 2px;
+  padding: 0;
+
+  &.location-104 {
+    background-color: #cedad6;
+    border: 1.5px solid #92b4a9;
+    border-left: 7px solid #92b4a9;
+    border-right: 7px solid #92b4a9;
+  }
+
+  &.location-gaibu {
+    background-color: #edcbc0;
+    border: 1.5px solid #d89682;
+    border-left: 7px solid #d89682;
+    border-right: 7px solid #d89682;
+  }
+
+  &.returned-event {
+    opacity: 0.5;
+  }
+}
+
+.fc-view-harness-passive {
+  background-color: $body-color;
+}
+
+/* カレンダー内コンテンツ */
+.fc .fc-day-today {
+  background-color: #fffc5f24 !important;
+}
+
+.fc .fc-timeline-slot:hover {
+  background-color: rgba(155, 238, 255, 0.141);
+}
+
+.fc .fc-timeline-events {
+  line-height: 15px;
+}
+
+.fc-h-event .fc-event-main {
+  color: $main-text-color;
+  @include fz(6);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fc .fc-scrollgrid-section-sticky>* {
+  background: $body-color;
+}
+
+/* カレンダー上の線 */
+.fc-theme-standard th {
+  border: none;
+}
+
+/* カレンダー下の線 */
+.fc-theme-standard td {
+  border: 1px solid #e7e7e7;
+}
+
+/* カレンダー下の線 */
+.fc .fc-scrollgrid-section-header.fc-scrollgrid-section-sticky>* {
+  border-bottom: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
+}
+
+/* カレンダーの中身がグレー */
+body {
+  background-color: $body-color;
+}
+
+.fc .fc-timeline-slots>table {
+  background-color: rgba(245, 245, 245, 0.26);
+}
+
+/* 日にち */
+.fc .fc-timeline-slot-cushion {
+  @include fz(7);
+  font-weight: normal;
+  color: #9a9a9a;
+  padding: 4px 5px 0;
+}
+
+/* 年月 */
+.fc-scrollgrid-sync-inner.fc-sticky {
+  font-size: .95rem !important;
+}
+
+/* HDD No. タイトル */
+.fc .fc-datagrid-header .fc-datagrid-cell-frame {
+  color: #9a9a9a;
+}
+
+/* HDD No. 内容 */
+.fc-datagrid-cell-main {
+  @include fz(7.5);
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.fc-event-main {
+  padding-left: 6px;
+}

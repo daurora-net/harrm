@@ -1,0 +1,31 @@
+@import '../base/variables';
+
+.header-nav {
+  padding: 10px 20px;
+  color: #e5e5e5;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+}
+
+.header-nav h1 {
+  font-size: 1.5rem;
+}
+
+.header-nav p {
+  color: #fff;
+}
+
+.header-nav-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    padding: 0 20px;
+    height: 35px;
+  }
+}

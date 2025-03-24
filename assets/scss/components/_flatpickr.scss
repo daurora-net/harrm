@@ -1,0 +1,63 @@
+// 吹き出し部分削除
+.flatpickr-calendar.arrowTop::before,
+.flatpickr-calendar.arrowTop::after {
+  display: none !important;
+}
+
+// リセットボタン設置のための余白
+.flatpickr-calendar {
+  padding-bottom: 40px !important;
+}
+
+// リセットボタン
+.flatpickr-reset-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #959ea9;
+  font-size: .7rem;
+  border: 1px solid #959ea9;
+  height: 26px;
+  line-height: 26px;
+  padding: 0px 7px;
+  width: max-content;
+
+  &:hover {
+    color: #fff;
+    background-color: #959ea9;
+  }
+}
+
+// 月選択カレンダー
+.flatpickr-monthSelect-theme-light {
+  width: 280px !important;
+}
+
+// billingページ：セレクトボタン
+// .flatpickr-billing-month-select {}
+
+
+// billingページ：カレンダーのセルサイズ
+.flatpickr-monthSelect-month {
+  width: 20% !important;
+  padding: 8px !important;
+}
+
+// ガントチャートページ：月移動ボタン
+input.flatpickr-month-select {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  background-color: #839ec2;
+  width: 70px;
+  text-align: center;
+  font-size: 17px !important;
+  color: #fff;
+
+  &::placeholder {
+    color: #fff;
+  }
+}

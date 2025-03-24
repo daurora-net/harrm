@@ -1,0 +1,1277 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500&display=swap");
+body {
+  background-color: #fcfcfc;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-y: hidden;
+}
+
+h2 {
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 0.9rem !important;
+  padding: 6px 10px;
+  color: #393939;
+}
+
+input,
+select {
+  height: 35px;
+  line-height: 23px;
+}
+
+.flex {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .table-scroll {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
+/*========= margin ===============*/
+.ml-10 {
+  margin-left: 10px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+/*========= width ===============*/
+.w-100px {
+  width: 100px;
+}
+
+.w-150px {
+  width: 150px;
+}
+
+.w-200px {
+  width: 200px;
+}
+
+.w-250px {
+  width: 250px;
+}
+
+.w-300px {
+  width: 300px;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+/*========= text ===============*/
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/*========= color ===============*/
+.bg-primary {
+  background-color: cadetblue;
+}
+
+.bg-brown {
+  background-color: #4a4a4a;
+}
+
+/*========= responsive ===============*/
+.pc {
+  display: block;
+}
+
+.sp {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .pc {
+    display: none !important;
+  }
+  .sp {
+    display: block !important;
+  }
+  input,
+  select,
+  textarea {
+    padding: 4px 7px;
+  }
+  .flex {
+    gap: 10px;
+  }
+}
+/*========= safari対応 ===============*/
+input[type=date]:required:invalid::-webkit-datetime-edit,
+input[type=date]:required:invalid::-webkit-datetime-edit-text,
+input[type=date]:required:invalid::-webkit-datetime-edit-month-field,
+input[type=date]:required:invalid::-webkit-datetime-edit-day-field,
+input[type=date]:required:invalid::-webkit-datetime-edit-year-field {
+  opacity: 0;
+}
+
+input[type=date]:required:valid::-webkit-datetime-edit,
+input[type=date]:required:valid::-webkit-datetime-edit-text,
+input[type=date]:required:valid::-webkit-datetime-edit-month-field,
+input[type=date]:required:valid::-webkit-datetime-edit-day-field,
+input[type=date]:required:valid::-webkit-datetime-edit-year-field {
+  opacity: 1;
+}
+
+.js-date-field.is-empty::-webkit-datetime-edit,
+.js-date-field.is-empty::-webkit-datetime-edit-text,
+.js-date-field.is-empty::-webkit-datetime-edit-month-field,
+.js-date-field.is-empty::-webkit-datetime-edit-day-field,
+.js-date-field.is-empty::-webkit-datetime-edit-year-field {
+  opacity: 0;
+}
+
+.ibm-plex-sans-jp-regular, body {
+  font-family: "IBM Plex Sans JP", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-sans-jp-medium {
+  font-family: "IBM Plex Sans JP", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0 !important;
+}
+
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+body {
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+textarea:not([rows]) {
+  min-height: 2em;
+}
+
+:target {
+  scroll-margin-block: 5ex;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+button a {
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+
+/*========= login ===============*/
+button.login {
+  padding: 8px 30px 7px;
+  background: darkgray;
+  color: #fff;
+  border: 1px solid darkgray;
+  margin: 20px auto 0;
+  display: block;
+}
+
+button.login:hover {
+  background: #fff;
+  color: darkgray;
+  border: 1px solid darkgray;
+}
+
+/*========= logout ===============*/
+button.logout {
+  padding: 0 15px;
+  background: #fff;
+  color: darkgray;
+  border: 1px solid #fff;
+  height: 30px;
+}
+
+button.logout:hover {
+  background: darkgray;
+  color: #fff;
+  border: 1px solid darkgray;
+}
+
+/*========= modal ===============*/
+button.modal-btn {
+  display: block;
+  background: cadetblue;
+  color: #fff;
+  border: 1px solid cadetblue;
+  margin: 30px 0 0;
+  width: 110px;
+  height: 45px;
+  line-height: 45px;
+}
+
+button.modal-btn:hover {
+  background: #fff;
+  color: cadetblue;
+  border: 1px solid cadetblue;
+}
+
+/*========= print ===============*/
+button.print-btn {
+  display: block;
+  background: darkgray;
+  color: #fff;
+  border: 1px solid darkgray;
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 20px;
+}
+
+button.print-btn:hover {
+  background: #fff;
+  color: darkgray;
+  border: 1px solid darkgray;
+}
+
+/*========= csv ===============*/
+button.csv-btn {
+  display: block;
+  background: #5dc2b3;
+  color: #fff;
+  border: 1px solid #5dc2b3;
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
+}
+
+button.csv-btn:hover {
+  background: #fff;
+  color: #5dc2b3;
+  border: 1px solid #5dc2b3;
+}
+
+/*========= delete ===============*/
+button.delete-btn {
+  display: block;
+  background: #eb7e7e;
+  color: #fff;
+  border: 1px solid #eb7e7e;
+  margin: 30px 0 0 40px;
+  width: 110px;
+  height: 45px;
+  line-height: 45px;
+}
+
+button.delete-btn:hover {
+  background: #fff;
+  color: #eb7e7e;
+  border: 1px solid #eb7e7e;
+}
+
+/*========= cancel ===============*/
+button.cancel-btn {
+  display: block;
+  background: #fff;
+  color: darkgray;
+  border: 1px solid darkgray;
+  margin: 30px 0 0;
+  width: 110px;
+  height: 45px;
+  line-height: 45px;
+}
+
+button.cancel-btn:hover {
+  background: darkgray;
+  color: #fff;
+  border: 1px solid darkgray;
+}
+
+/*========= index ===============*/
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid cadetblue;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  padding: 0;
+  color: cadetblue;
+  background-color: #fff;
+}
+
+.add-btn:hover {
+  border: 2px solid cadetblue;
+  color: #fff;
+  background-color: cadetblue;
+}
+
+/*========= calendar ===============*/
+/* primarycolor : #fcfcfc */
+/* 透過primarycolor : #f5f5f542 */
+#calendar {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+#calendar .add-btn {
+  position: absolute;
+}
+
+.fc-license-message {
+  display: none;
+}
+
+.fc-event {
+  border-radius: 2px;
+  padding: 0;
+}
+.fc-event.location-104 {
+  background-color: #cedad6;
+  border: 1.5px solid #92b4a9;
+  border-left: 7px solid #92b4a9;
+  border-right: 7px solid #92b4a9;
+}
+.fc-event.location-gaibu {
+  background-color: #edcbc0;
+  border: 1.5px solid #d89682;
+  border-left: 7px solid #d89682;
+  border-right: 7px solid #d89682;
+}
+.fc-event.returned-event {
+  opacity: 0.5;
+}
+
+.fc-view-harness-passive {
+  background-color: #fff;
+}
+
+/* カレンダー内コンテンツ */
+.fc .fc-day-today {
+  background-color: rgba(255, 252, 95, 0.1411764706) !important;
+}
+
+.fc .fc-timeline-slot:hover {
+  background-color: rgba(155, 238, 255, 0.141);
+}
+
+.fc .fc-timeline-events {
+  line-height: 15px;
+}
+
+.fc-h-event .fc-event-main {
+  color: #37352f;
+  font-size: 0.6rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fc .fc-scrollgrid-section-sticky > * {
+  background: #fff;
+}
+
+/* カレンダー上の線 */
+.fc-theme-standard th {
+  border: none;
+}
+
+/* カレンダー下の線 */
+.fc-theme-standard td {
+  border: 1px solid #e7e7e7;
+}
+
+/* カレンダー下の線 */
+.fc .fc-scrollgrid-section-header.fc-scrollgrid-section-sticky > * {
+  border-bottom: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
+}
+
+/* カレンダーの中身がグレー */
+body {
+  background-color: #fff;
+}
+
+.fc .fc-timeline-slots > table {
+  background-color: rgba(245, 245, 245, 0.26);
+}
+
+/* 日にち */
+.fc .fc-timeline-slot-cushion {
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: #9a9a9a;
+  padding: 4px 5px 0;
+}
+
+/* 年月 */
+.fc-scrollgrid-sync-inner.fc-sticky {
+  font-size: 0.95rem !important;
+}
+
+/* HDD No. タイトル */
+.fc .fc-datagrid-header .fc-datagrid-cell-frame {
+  color: #9a9a9a;
+}
+
+/* HDD No. 内容 */
+.fc-datagrid-cell-main {
+  font-size: 0.75rem;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.fc-event-main {
+  padding-left: 6px;
+}
+
+.flatpickr-calendar.arrowTop::before,
+.flatpickr-calendar.arrowTop::after {
+  display: none !important;
+}
+
+.flatpickr-calendar {
+  padding-bottom: 40px !important;
+}
+
+.flatpickr-reset-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #959ea9;
+  font-size: 0.7rem;
+  border: 1px solid #959ea9;
+  height: 26px;
+  line-height: 26px;
+  padding: 0px 7px;
+  width: -moz-max-content;
+  width: max-content;
+}
+.flatpickr-reset-button:hover {
+  color: #fff;
+  background-color: #959ea9;
+}
+
+.flatpickr-monthSelect-theme-light {
+  width: 280px !important;
+}
+
+.flatpickr-monthSelect-month {
+  width: 20% !important;
+  padding: 8px !important;
+}
+
+input.flatpickr-month-select {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  background-color: #839ec2;
+  width: 70px;
+  text-align: center;
+  font-size: 17px !important;
+  color: #fff;
+}
+input.flatpickr-month-select::-moz-placeholder {
+  color: #fff;
+}
+input.flatpickr-month-select::placeholder {
+  color: #fff;
+}
+
+/*========= form ===============*/
+form.form {
+  background: #f2f2f2;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-content {
+  display: grid;
+  margin-bottom: 10px;
+}
+.form-content label {
+  font-size: 0.9rem;
+  margin: 10px 0 5px;
+}
+
+/*========= checkbox ===============*/
+/* チェックボックスを隠す */
+.custom-checkbox {
+  display: none;
+}
+
+/* カスタムチェックボックスのスタイル */
+.custom-checkbox + label {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+}
+
+/* チェックボックスの見た目を作成 */
+.custom-checkbox + label::before {
+  content: "";
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* チェックが入ったときのスタイル */
+.custom-checkbox:checked + label::before {
+  background-color: darkgray;
+  border-color: darkgray;
+}
+
+/* チェックマークの見た目 */
+.custom-checkbox:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 16.5px;
+  top: 3px;
+  width: 7px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/*========= selectbox ===============*/
+/* セレクトボックス全体のスタイル */
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ラッパーに対してスタイルを設定 */
+.custom-select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* トグルアイコンをラッパーの擬似要素として設定 */
+.custom-select-wrapper::after {
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 52%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #ccc;
+}
+
+/*========= input ===============*/
+.auto-input {
+  background-color: transparent;
+  color: gray;
+}
+
+input[type=date] {
+  position: relative;
+  cursor: pointer;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+input::-moz-placeholder {
+  color: #ccc;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+/*========= remember me ===============*/
+.rememberme-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  white-space: nowrap;
+  color: #656565;
+}
+.rememberme-content label {
+  font-size: 0.85rem;
+  margin: 0;
+}
+.rememberme-content input {
+  margin: 0 0 2px;
+  width: 15px;
+  height: 15px;
+}
+.rememberme-content input:hover {
+  cursor: pointer;
+}
+
+/*========= responsive ===============*/
+@media (max-width: 768px) {
+  form.form {
+    max-width: 100%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 5%;
+  }
+  .form-content label {
+    font-size: 0.9rem;
+  }
+  select {
+    font-size: 0.9rem;
+    padding: 6px 10px 5px;
+  }
+}
+/*========= login-page ===============*/
+body.page-login {
+  background-color: #b8b8b8;
+}
+body.page-login .login-wrap {
+  width: 400px;
+  margin: 15vh auto 0;
+}
+body.page-login .login-wrap h1 {
+  font-size: 1.6rem;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 30px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  line-height: normal;
+}
+body.page-login .login-wrap h1 span {
+  font-size: 1.4rem;
+}
+body.page-login .login-wrap form.form {
+  background-color: #fff;
+}
+body.page-login .login-wrap .register-info {
+  padding: 20px 0;
+  text-align: center;
+  color: #333;
+}
+body.page-login .login-wrap .login-error-message {
+  color: #1cda61;
+  font-size: small;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.verification_message {
+  text-align: center;
+  margin: 20vh auto 0;
+}
+.verification_message h2 {
+  font-weight: normal;
+  font-size: 1.1rem;
+}
+
+/*========= modal ===============*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 40%;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+.modal-content h3 {
+  padding-bottom: 30px;
+  color: cadetblue;
+}
+
+/* 閉じるボタン */
+.close {
+  position: absolute;
+  color: #aaa;
+  font-size: 30px;
+  padding: 0;
+  right: 23px;
+  top: 10px;
+  height: 0;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.required::after {
+  content: "*";
+  color: red;
+  padding-left: 3px;
+}
+
+.error-message-wrap {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.error-message {
+  color: #e4ac00;
+  font-size: small;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    min-width: 100%;
+    width: 100%;
+  }
+  .modal-content h3 {
+    padding-bottom: 10px;
+    font-size: 1rem;
+  }
+  .close {
+    right: 35px;
+    top: 8px;
+    font-size: 26px;
+  }
+}
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 10px 0 15px;
+}
+.pagination a {
+  display: inline-block;
+  color: black;
+  border-radius: 50%;
+  border: 1px solid #dedede;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.pagination a:hover {
+  background-color: #86c8cc;
+  color: white;
+}
+.pagination a i {
+  line-height: 40px;
+}
+.pagination .active a {
+  background-color: #5CC6CD;
+  color: white;
+}
+.pagination .disabled a {
+  pointer-events: none;
+  color: #ccc;
+}
+.pagination .disabled a:hover {
+  background-color: initial;
+  color: #ccc;
+}
+
+.pagination-info {
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  color: gray;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .table-scroll {
+    overflow: visible !important;
+    height: auto !important;
+  }
+  .table-container table tbody td:nth-of-type(3),
+  .table-container table tbody td:nth-of-type(4) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 5ch;
+  }
+}
+/*========= table-container ===============*/
+.table-container {
+  position: relative;
+  display: inline-block;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 100%;
+  max-height: calc(85vh - 150px);
+  margin: 20px auto 10px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.table-container table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.table-container table thead th,
+.table-container table tbody td {
+  font-size: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 10px 10px 7px;
+  border-right: 1px solid #ccc;
+}
+.table-container table thead th {
+  position: sticky;
+  top: 0;
+  text-align: left;
+  font-weight: normal;
+  color: #fff;
+  background-color: #747474;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  z-index: 10;
+}
+.table-container table tbody td {
+  border-bottom: 1px solid #ccc;
+}
+.table-container table tbody tr:nth-child(even) td {
+  background-color: #ebebeb;
+}
+.table-container table th:last-child,
+.table-container table td:last-child {
+  border-right: none;
+}
+.table-container table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.hdd-list.table-container,
+.user-list.table-container,
+.billing-list.table-container {
+  max-height: calc(85vh - 65px) !important;
+}
+
+/*========= editボタン ===============*/
+.edit-btn {
+  color: #939393;
+  background-color: transparent;
+}
+.edit-btn:hover {
+  opacity: 0.7;
+}
+
+/*========= table-sort ===============*/
+.table-sort th {
+  cursor: pointer;
+}
+.table-sort th i {
+  margin-left: 3px;
+  font-size: 0.7rem;
+  color: #bfbfbf;
+}
+.table-sort th i.fa-sort {
+  width: 12.6px;
+}
+
+/*========= table-search ===============*/
+.table-search input::-moz-placeholder {
+  font-family: "Font Awesome 6 Free", sans-serif;
+  font-weight: 900;
+  color: #ccc;
+}
+.table-search input::placeholder {
+  font-family: "Font Awesome 6 Free", sans-serif;
+  font-weight: 900;
+  color: #ccc;
+}
+
+/*========= responsive ===============*/
+@media (max-width: 768px) {
+  .table-container {
+    margin: 10px auto;
+  }
+  .table-container table thead th,
+  .table-container table tbody td {
+    padding: 7px 10px 4px;
+    font-size: 0.7rem;
+  }
+}
+.header-nav {
+  padding: 10px 20px;
+  color: #e5e5e5;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+}
+
+.header-nav h1 {
+  font-size: 1.5rem;
+}
+
+.header-nav p {
+  color: #fff;
+}
+
+.header-nav-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    padding: 0 20px;
+    height: 35px;
+  }
+}
+/*========= main ===============*/
+main {
+  width: 87%;
+  color: #37352f;
+}
+
+.container {
+  margin: 0 10% 0;
+  padding: 40px 0;
+}
+
+.header-container {
+  position: relative;
+}
+
+@media (max-width: 1300px) {
+  .container {
+    width: -moz-max-content;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3%;
+  }
+}
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+  }
+  .container {
+    margin: 0 auto;
+    height: calc(100vh - 35px);
+    overflow: scroll;
+  }
+  .container h2 {
+    padding-bottom: 10px;
+  }
+}
+aside {
+  width: 13%;
+  height: 100vh;
+  background-color: #a2a2a2;
+}
+aside nav.nav {
+  position: relative;
+  height: 100vh;
+  background-color: #a2a2a2;
+  border-left: 10px solid #a2a2a2;
+  overflow-x: hidden;
+  transition: all 0.5s;
+}
+aside nav.nav ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 50px;
+  padding-left: 10px;
+}
+aside nav.nav ul li {
+  list-style: none;
+  display: block;
+  position: relative;
+  width: 100%;
+  border-radius: 15px;
+}
+aside nav.nav ul li:hover {
+  background-color: rgba(137, 140, 143, 0.368627451);
+}
+aside nav.nav ul li.active {
+  background-color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+aside nav.nav ul li.active a::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -30px;
+  right: 0;
+  border-radius: 50%;
+  box-shadow: 15px 15px 0 #fff;
+}
+aside nav.nav ul li.active a::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 50px;
+  right: 0;
+  border-radius: 50%;
+  box-shadow: 15px -15px 0 #fff;
+}
+aside nav.nav ul li.active a span {
+  color: #4a4a4a;
+}
+aside nav.nav ul li a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  font-size: 13px;
+  padding-left: 15px;
+}
+aside nav.nav ul li a:hover {
+  opacity: 1;
+}
+aside nav.nav ul li a span {
+  color: #fff;
+}
+aside nav.nav ul li a span.icon {
+  display: block;
+  min-width: 45px;
+  height: 50px;
+  line-height: 53px;
+}
+
+@media (min-width: 769px) {
+  .open-icon {
+    display: none;
+  }
+}
+.open-icon,
+.close-icon {
+  height: 48px;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  aside#side-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    color: #e5e5e5;
+  }
+  aside#side-menu.open {
+    left: 0;
+  }
+  aside nav.nav {
+    border-left: none;
+    overflow: hidden;
+  }
+  aside nav.nav ul {
+    padding-top: 20px;
+    padding-left: 0;
+    padding-bottom: 20px;
+    margin: 10% auto;
+    text-align: center;
+    width: -moz-max-content;
+    width: max-content;
+    position: relative;
+  }
+  aside nav.nav ul li.active {
+    background-color: transparent;
+  }
+  aside nav.nav ul li.active a::before {
+    content: none;
+  }
+  aside nav.nav ul li.active a::after {
+    content: none;
+  }
+  aside nav.nav ul li a {
+    padding-left: 0;
+    display: block;
+  }
+  aside nav.nav ul li a span.icon {
+    font-size: 1rem;
+  }
+  aside nav.nav .nav-logout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 10% auto;
+    padding: 10%;
+    text-align: center;
+    background-color: #b8b8b8;
+  }
+  aside nav.nav .nav-logout a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+  }
+  aside nav.nav .nav-logout .user-box {
+    border: 1px solid #e9e9e9;
+    border-radius: 5px;
+    padding: 0 10px;
+    width: -moz-max-content;
+    width: max-content;
+    margin: 25px auto;
+    font-size: 0.9rem;
+    height: 35px;
+    line-height: 35px;
+  }
+  .open-icon,
+  .close-icon {
+    height: 35px;
+    line-height: 38px;
+    font-size: unset;
+  }
+}
+/*========= hdd_list page ===============*/
+.user-list {
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .user-list {
+    margin-top: 30px;
+  }
+}

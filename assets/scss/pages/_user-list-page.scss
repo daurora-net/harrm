@@ -1,0 +1,11 @@
+/*========= hdd_list page ===============*/
+
+.user-list {
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .user-list {
+    margin-top: 30px;
+  }
+}

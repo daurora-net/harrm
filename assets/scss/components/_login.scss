@@ -1,0 +1,50 @@
+/*========= login-page ===============*/
+body.page-login {
+  background-color: #b8b8b8;
+
+  .login-wrap {
+    width: 400px;
+    margin: 15vh auto 0;
+
+    h1 {
+      @include fz(16);
+      color: #fff;
+      text-align: center;
+      padding-bottom: 30px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      line-height: normal;
+
+      span {
+        @include fz(14);
+      }
+    }
+
+    form.form {
+      background-color: #fff;
+    }
+
+    .register-info {
+      padding: 20px 0;
+      text-align: center;
+      color: #333;
+    }
+
+    .login-error-message {
+      color: #1cda61;
+      font-size: small;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.verification_message {
+  text-align: center;
+  margin: 20vh auto 0;
+
+  h2 {
+    font-weight: normal;
+    @include fz(11);
+  }
+}
