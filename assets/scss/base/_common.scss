@@ -91,6 +91,10 @@ select {
   width: 70%;
 }
 
+.pc-w-100px {
+  width: 100px;
+}
+
 /*========= text ===============*/
 .text-center {
   text-align: center !important;
@@ -136,6 +140,11 @@ select {
   .flex {
     gap: 10px;
   }
+
+  .pc-w-100px {
+    width: 90px;
+  }
+  
 }
 
 /*========= safari対応 ===============*/

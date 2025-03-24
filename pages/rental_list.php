@@ -92,7 +92,7 @@ include '../parts/head.php';
           <!-- フィルターと表示件数選択 -->
           <form method="get" action="">
             <!-- ソートセレクトボックス -->
-            <div class="custom-select-wrapper w-100px">
+            <div class="custom-select-wrapper pc-w-100px">
               <select id="filter_returned" name="filter_returned" onchange="this.form.submit();">
                 <option value="">すべて</option>
                 <option value="0" <?php if ($filter_returned === '0')
@@ -100,7 +100,7 @@ include '../parts/head.php';
               </select>
             </div>
             <!-- 表示件数セレクトボックス -->
-            <div class="custom-select-wrapper w-100px ml-10">
+            <div class="custom-select-wrapper pc-w-100px ml-10">
               <select name="perPage" id="perPage" onchange="this.form.submit();">
                 <?php
                 $options = [30, 50, 70, 100];
@@ -114,7 +114,7 @@ include '../parts/head.php';
             <input type="hidden" name="page" value="<?php echo $page; ?>">
           </form>
           <!-- テーブル検索機能 -->
-          <div class="table-search w-150px ml-10">
+          <div class="table-search ml-10">
             <input type="text" id="rentalTableSearchInput" placeholder="&#xf002;">
           </div>
         </div>

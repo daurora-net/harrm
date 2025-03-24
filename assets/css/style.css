@@ -84,6 +84,10 @@ select {
   width: 70%;
 }
 
+.pc-w-100px {
+  width: 100px;
+}
+
 /*========= text ===============*/
 .text-center {
   text-align: center !important;
@@ -125,6 +129,9 @@ select {
   }
   .flex {
     gap: 10px;
+  }
+  .pc-w-100px {
+    width: 90px;
   }
 }
 /*========= safari対応 ===============*/
@@ -1003,11 +1010,16 @@ body.page-login .login-wrap .login-error-message {
 }
 
 /*========= table-search ===============*/
+.table-search {
+  width: 150px;
+}
+
 .table-search input::-moz-placeholder {
   font-family: "Font Awesome 6 Free", sans-serif;
   font-weight: 900;
   color: #ccc;
 }
+
 .table-search input::placeholder {
   font-family: "Font Awesome 6 Free", sans-serif;
   font-weight: 900;
@@ -1016,6 +1028,9 @@ body.page-login .login-wrap .login-error-message {
 
 /*========= responsive ===============*/
 @media (max-width: 768px) {
+  .table-search {
+    width: 70px;
+  }
   .table-container {
     margin: 10px auto;
   }
@@ -1069,23 +1084,14 @@ main {
   position: relative;
 }
 
-@media (max-width: 1300px) {
-  .container {
-    width: -moz-max-content;
-    width: max-content;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 3%;
-  }
-}
 @media (max-width: 768px) {
   main {
     width: 100%;
   }
   .container {
-    margin: 0 auto;
+    margin: 0 5%;
     height: calc(100vh - 35px);
-    overflow: scroll;
+    overflow: auto;
   }
   .container h2 {
     padding-bottom: 10px;

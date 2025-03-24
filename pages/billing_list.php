@@ -97,7 +97,7 @@ include '../parts/head.php';
               class="csv-btn">CSV出力</button>
           </div>
           <!-- テーブル検索機能 -->
-          <div class="no-print table-search w-150px ml-10">
+          <div class="no-print table-search ml-10">
             <input type="text" id="billingTableSearchInput" placeholder="&#xf002;">
           </div>
         </form>
