@@ -146,7 +146,11 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("editEventStart").value = startStr;
         document.getElementById("editEventEnd").value = endStr;
       }
-
+      // 関係ない項目はイベントオブジェクトの既存値をそのままセット
+      document.getElementById("editRentalLocation").value = movedEvent.extendedProps.location || "";
+      document.getElementById("editRentalCable").value = movedEvent.extendedProps.cable || "";
+      document.getElementById("editEventNotes").value = movedEvent.extendedProps.notes || "";
+      
       // HDDリストの再取得→新HDDを選択
       fetch(`actions/fetch_available_resources.php?current_rental_id=${movedEvent.id}`)
         .then(response => response.json())
@@ -218,6 +222,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("editEventStart").value = startStr;
         document.getElementById("editEventEnd").value = endStr;
       }
+      // 変更対象外の項目はそのままの値を維持
+      document.getElementById("editRentalLocation").value = resizedEvent.extendedProps.location || "";
+      document.getElementById("editRentalCable").value = resizedEvent.extendedProps.cable || "";
+      document.getElementById("editEventNotes").value = resizedEvent.extendedProps.notes || "";
 
       fetch(`actions/fetch_available_resources.php?current_rental_id=${resizedEvent.id}`)
         .then(response => response.json())
