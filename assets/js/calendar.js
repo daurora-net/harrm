@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 既に返却日があれば「開始日と返却日だけ」を変更し、終了予定日は変更しない
         document.getElementById("editEventStart").value = startStr;
         document.getElementById("editReturnDate").value = endStr;
+        document.getElementById("editReturnDate").dispatchEvent(new Event("input"));   
         // 終了予定日は元の値を表示させたいので、real_end から再セット
         if (movedEvent.extendedProps.real_end) {
           document.getElementById("editEventEnd").value = movedEvent.extendedProps.real_end;
@@ -207,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 既に返却日がある場合は、開始日と返却日のみ変更
         document.getElementById("editEventStart").value = startStr;
         document.getElementById("editReturnDate").value = endStr;
+        document.getElementById("editReturnDate").dispatchEvent(new Event("input"));
         // 終了予定日は元のままにする（real_end があれば戻す）
         if (resizedEvent.extendedProps.real_end) {
           document.getElementById("editEventEnd").value = resizedEvent.extendedProps.real_end;
