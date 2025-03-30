@@ -87,14 +87,21 @@ document.addEventListener('DOMContentLoaded', function () {
             data.sort((a, b) => a.name.localeCompare(b.name, 'en', { numeric: true }));
             var hddSelect = document.getElementById("addRentalHdd");
             if (!hddSelect) return;
+            var currentSelection = hddSelect.value;
             hddSelect.innerHTML = '';
-
             data.forEach(function (resource) {
               var option = document.createElement("option");
               option.value = resource.id;
               option.textContent = resource.name;
               hddSelect.appendChild(option);
             });
+            
+            var stillAvailable = data.some(function(resource) {
+              return resource.id == currentSelection;
+            });
+            if (stillAvailable) {
+              hddSelect.value = currentSelection;
+            }
           })
           .catch(error => {
             console.error("未使用HDD取得エラー (addRentalModal):", error);
