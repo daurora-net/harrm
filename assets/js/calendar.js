@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     editable: true, // イベントをドラッグ移動、リサイズできる
     resourceAreaHeaderContent: 'HDD No.',
-    resourceOrder: 'name',
+    resourceOrder: function(a, b) {
+      return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
+    },
     resourceAreaWidth: "200px",
 
     selectable: true,
