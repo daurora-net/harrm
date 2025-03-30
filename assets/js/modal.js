@@ -56,9 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.submitter && e.submitter.name === 'delete' && e.submitter.value === '1') {
         return;
       }
+      if (!validateEditHddForm()) {
+        e.preventDefault();
+        return;
+      }
     });
   }
-
+  
   // ---------------------------------------------
   //  レンタル追加モーダル
   // ---------------------------------------------

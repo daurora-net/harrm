@@ -42,36 +42,6 @@ function validateEditEventForm() {
   ]);
 }
 
-// HDD追加
-function validateAddHddForm() {
-  let isValid = validateFields([
-    { inputId: 'hddName', errorId: 'addHddNameErrorMessage' }
-  ]);
-  let hddNameEl = document.getElementById('hddName');
-  if (hddNameEl && hddNameEl.value.trim().length > 10) {
-    let errorEl = document.getElementById('addHddNameErrorMessage');
-    if (errorEl) errorEl.innerHTML = "⚠️ 10文字以内";
-    hddNameEl.focus();
-    isValid = false;
-  }
-  return isValid;
-}
-
-// HDD編集
-function validateEditHddForm() {
-  let isValid = validateFields([
-    { inputId: 'editHddName', errorId: 'editHddNameErrorMessage' }
-  ]);
-  let hddNameEl = document.getElementById('editHddName');
-  if (hddNameEl && hddNameEl.value.trim().length > 10) {
-    let errorEl = document.getElementById('editHddNameErrorMessage');
-    if (errorEl) errorEl.innerHTML = "⚠️ 10文字以内";
-    hddNameEl.focus();
-    isValid = false;
-  }
-  return isValid;
-}
-
 // ユーザー編集
 function validateEditUserForm() {
   return validateFields([
@@ -137,3 +107,39 @@ const validateEditEventDateOrder = () =>
       return: "⚠️ 開始日より後"
     }
   });
+
+// -----------------------------
+// HDD名の文字数
+// -----------------------------
+function validateHddName(inputId, errorId) {
+  const hddNameEl = document.getElementById(inputId);
+  const errorEl = document.getElementById(errorId);
+
+  if (errorEl) {
+    errorEl.innerHTML = "";
+  }
+
+  if (hddNameEl && hddNameEl.value.trim().length > 10) {
+    if (errorEl) {
+      errorEl.innerHTML = "⚠️ 10文字以内";
+    }
+    hddNameEl.focus();
+    return false;
+  }
+
+  return true;
+}
+
+// HDD追加
+function validateAddHddForm() {
+  return validateFields([
+    { inputId: 'hddName', errorId: 'addHddNameErrorMessage' }
+  ]) && validateHddName('hddName', 'addHddNameErrorMessage');
+}
+
+// HDD編集
+function validateEditHddForm() {
+  return validateFields([
+    { inputId: 'editHddName', errorId: 'editHddNameErrorMessage' }
+  ]) && validateHddName('editHddName', 'editHddNameErrorMessage');
+}
