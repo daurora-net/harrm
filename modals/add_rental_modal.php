@@ -109,6 +109,7 @@
       locale: "ja",
       dateFormat: "Y-m-d",
       clickOpens: false,
+      appendTo: document.getElementById('addRentalModal'),
       onReady: function (selectedDates, dateStr, instance) {
         instance.input.addEventListener("click", function () {
           if (instance.isOpen) {

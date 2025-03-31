@@ -523,7 +523,21 @@ body {
 }
 
 .flatpickr-calendar {
-  padding-bottom: 40px !important;
+  padding: 10px 10px 50px !important;
+  width: auto !important;
+}
+
+.flatpickr-months {
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  margin-bottom: 5px;
+}
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+  padding: 0 10px !important;
+  height: 40px;
+  line-height: 40px;
 }
 
 .flatpickr-reset-button {
@@ -909,7 +923,7 @@ body.page-login .login-wrap .login-error-message {
 
 @media print {
   @page {
-    size: A4;
+    size: A4 landscape;
     margin: 0;
     padding: 0;
   }
@@ -920,12 +934,17 @@ body.page-login .login-wrap .login-error-message {
     overflow: visible !important;
     height: auto !important;
   }
-  .table-container table tbody td:nth-of-type(3),
-  .table-container table tbody td:nth-of-type(4) {
+  .table-container table tbody td {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 5ch;
+  }
+  .table-container table tbody td:nth-of-type(2) {
+    max-width: 20em;
+  }
+  .table-container table tbody td:nth-of-type(3),
+  .table-container table tbody td:nth-of-type(4) {
+    max-width: 12em;
   }
 }
 /*========= table-container ===============*/

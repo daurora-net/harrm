@@ -6,7 +6,22 @@
 
 // リセットボタン設置のための余白
 .flatpickr-calendar {
-  padding-bottom: 40px !important;
+  padding: 10px 10px 50px !important;
+  width: auto !important;
+}
+
+.flatpickr-months {
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  margin-bottom: 5px;
+
+  .flatpickr-prev-month,
+  .flatpickr-next-month {
+    padding: 0 10px !important;
+    height: 40px;
+    line-height: 40px;
+  }
 }
 
 // リセットボタン
