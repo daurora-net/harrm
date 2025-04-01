@@ -142,8 +142,12 @@ include '../parts/head.php';
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($rentals as $rental) { ?>
-              <tr data-id="<?php echo htmlspecialchars($rental['id']); ?>">
+            <?php foreach ($rentals as $rental) { 
+              $endDate = strtotime($rental['end']);
+              $today = strtotime(date('Y-m-d'));
+              $isOverdue = ($endDate < $today && empty($rental['return_date']));
+            ?>
+            <tr data-id="<?php echo htmlspecialchars($rental['id']); ?>" <?php if($isOverdue) echo 'class="overdue"'; ?>>
                 <td>
                   <button class="edit-btn edit-event-btn" data-bs-toggle="modal" data-bs-target="#editEventModal"
                     data-id="<?php echo htmlspecialchars($rental['id']); ?>"

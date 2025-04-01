@@ -105,6 +105,12 @@
   color: #ccc;
 }
 
+/*========= overdue ===============*/
+.overdue {
+  color: #ff6b00;
+  // background-color: #ff6b0033;
+}
+
 /*========= responsive ===============*/
 @media (max-width: 768px) {
   .table-search {

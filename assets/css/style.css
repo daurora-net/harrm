@@ -1045,6 +1045,11 @@ body.page-login .login-wrap .login-error-message {
   color: #ccc;
 }
 
+/*========= overdue ===============*/
+.overdue {
+  color: #ff6b00;
+}
+
 /*========= responsive ===============*/
 @media (max-width: 768px) {
   .table-search {
