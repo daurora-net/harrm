@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-  
+
   // ---------------------------------------------
   //  レンタル追加モーダル
   // ---------------------------------------------
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
               option.textContent = resource.name;
               hddSelect.appendChild(option);
             });
-            
-            var stillAvailable = data.some(function(resource) {
+
+            var stillAvailable = data.some(function (resource) {
               return resource.id == currentSelection;
             });
             if (stillAvailable) {
@@ -364,6 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
           || window.currentCalendarAction.type === 'resize')) {
         window.currentCalendarAction.info.revert();
       }
+      window.dispatchEvent(new Event("cancelEditEventModal"));
       window.currentCalendarAction = null;
     }
     if (editUserModal && event.target === editUserModal) {
@@ -388,6 +389,7 @@ document.addEventListener('DOMContentLoaded', function () {
             || window.currentCalendarAction.type === 'resize')) {
           window.currentCalendarAction.info.revert();
         }
+        window.dispatchEvent(new Event("cancelEditEventModal"));
         window.currentCalendarAction = null;
       }
     });

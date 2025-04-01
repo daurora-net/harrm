@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     editable: true, // イベントをドラッグ移動、リサイズできる
     resourceAreaHeaderContent: 'HDD No.',
-    resourceOrder: function(a, b) {
+    resourceOrder: function (a, b) {
       return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
     },
     resourceAreaWidth: "200px",
@@ -133,26 +133,22 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById("editEventId").value = movedEvent.id;
       document.getElementById("editEventTitle").value = movedEvent.title;
       document.getElementById("editEventManager").value = movedEvent.extendedProps.manager || "";
-      // 返却日があるかで処理を分ける
+      // return_date が「既にあれば新しい endStr をセット」「無ければ空のまま」
+      document.getElementById("editEventStart").value = startStr;
+      document.getElementById("editEventEnd").value = endStr;
       if (movedEvent.extendedProps.return_date) {
-        // 既に返却日があれば「開始日と返却日だけ」を変更し、終了予定日は変更しない
-        document.getElementById("editEventStart").value = startStr;
+        // 既存の return_date があれば、ドラッグ後の日付で上書き
         document.getElementById("editReturnDate").value = endStr;
-        document.getElementById("editReturnDate").dispatchEvent(new Event("input"));   
-        // 終了予定日は元の値を表示させたいので、real_end から再セット
-        if (movedEvent.extendedProps.real_end) {
-          document.getElementById("editEventEnd").value = movedEvent.extendedProps.real_end;
-        }
       } else {
-        // 返却日がなければ「開始日と終了予定日」を変更し、返却日は空のまま
-        document.getElementById("editEventStart").value = startStr;
-        document.getElementById("editEventEnd").value = endStr;
+        // なければ空
+        document.getElementById("editReturnDate").value = '';
       }
-      // 関係ない項目はイベントオブジェクトの既存値をそのままセット
+      document.getElementById("editReturnDate").dispatchEvent(new Event("input"));
+
       document.getElementById("editRentalLocation").value = movedEvent.extendedProps.location || "";
       document.getElementById("editRentalCable").value = movedEvent.extendedProps.cable || "";
       document.getElementById("editEventNotes").value = movedEvent.extendedProps.notes || "";
-      
+
       // HDDリストの再取得→新HDDを選択
       fetch(`actions/fetch_available_resources.php?current_rental_id=${movedEvent.id}`)
         .then(response => response.json())
@@ -209,22 +205,16 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById("editEventId").value = resizedEvent.id;
       document.getElementById("editEventTitle").value = resizedEvent.title;
       document.getElementById("editEventManager").value = resizedEvent.extendedProps.manager || "";
-      // 返却日があるかで処理を分ける
+      // 既に return_date があれば新しい endStr で上書き、無ければ空にする
+      document.getElementById("editEventStart").value = startStr;
+      document.getElementById("editEventEnd").value = endStr;
       if (resizedEvent.extendedProps.return_date) {
-        // 既に返却日がある場合は、開始日と返却日のみ変更
-        document.getElementById("editEventStart").value = startStr;
         document.getElementById("editReturnDate").value = endStr;
-        document.getElementById("editReturnDate").dispatchEvent(new Event("input"));
-        // 終了予定日は元のままにする（real_end があれば戻す）
-        if (resizedEvent.extendedProps.real_end) {
-          document.getElementById("editEventEnd").value = resizedEvent.extendedProps.real_end;
-        }
       } else {
-        // 返却日がなければ終了予定日を更新
-        document.getElementById("editEventStart").value = startStr;
-        document.getElementById("editEventEnd").value = endStr;
+        document.getElementById("editReturnDate").value = '';
       }
-      // 変更対象外の項目はそのままの値を維持
+      document.getElementById("editReturnDate").dispatchEvent(new Event("input"));
+
       document.getElementById("editRentalLocation").value = resizedEvent.extendedProps.location || "";
       document.getElementById("editRentalCable").value = resizedEvent.extendedProps.cable || "";
       document.getElementById("editEventNotes").value = resizedEvent.extendedProps.notes || "";
