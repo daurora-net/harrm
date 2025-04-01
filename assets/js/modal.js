@@ -235,6 +235,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var editEventErrorMessage = document.getElementById('editEventErrorMessage');
   if (editEventForm) {
     editEventForm.addEventListener('submit', function (e) {
+      if (!validateEditEventDateOrder()) {
+        e.preventDefault();
+        return;
+      }
       const isDeleteAction = (e.submitter && e.submitter.name === 'delete' && e.submitter.value === '1');
 
       if (!isDeleteAction) {
