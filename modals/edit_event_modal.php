@@ -133,6 +133,7 @@
 
         resetBtn.addEventListener("click", function () {
           instance.clear();
+          instance.close();
         });
 
         instance.calendarContainer.appendChild(resetBtn);
