@@ -135,12 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById("editEventManager").value = movedEvent.extendedProps.manager || "";
       // return_date が「既にあれば新しい endStr をセット」「無ければ空のまま」
       document.getElementById("editEventStart").value = startStr;
-      document.getElementById("editEventEnd").value = endStr;
       if (movedEvent.extendedProps.return_date) {
-        // 既存の return_date があれば、ドラッグ後の日付で上書き
+        // 既に返却日が設定されている場合は、返却日だけを更新し、終了予定日はそのままの元値（real_end）を保持する
         document.getElementById("editReturnDate").value = endStr;
+        document.getElementById("editEventEnd").value = movedEvent.extendedProps.real_end;
       } else {
-        // なければ空
+        // 返却日が設定されていなければ、通常通り終了予定日を更新し、返却日は空にする
+        document.getElementById("editEventEnd").value = endStr;
         document.getElementById("editReturnDate").value = '';
       }
       document.getElementById("editReturnDate").dispatchEvent(new Event("input"));
@@ -207,10 +208,13 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById("editEventManager").value = resizedEvent.extendedProps.manager || "";
       // 既に return_date があれば新しい endStr で上書き、無ければ空にする
       document.getElementById("editEventStart").value = startStr;
-      document.getElementById("editEventEnd").value = endStr;
       if (resizedEvent.extendedProps.return_date) {
+        // 既に返却日が設定されている場合は、返却日だけを更新し、終了予定日はそのままの元値（real_end）を保持する
         document.getElementById("editReturnDate").value = endStr;
+        document.getElementById("editEventEnd").value = movedEvent.extendedProps.real_end;
       } else {
+        // 返却日が設定されていなければ、通常通り終了予定日を更新し、返却日は空にする
+        document.getElementById("editEventEnd").value = endStr;
         document.getElementById("editReturnDate").value = '';
       }
       document.getElementById("editReturnDate").dispatchEvent(new Event("input"));
