@@ -103,20 +103,55 @@
   // ---------------------------------------------
   //  カレンダーをflatpickrでカスタマイズ
   // ---------------------------------------------
-  // 共通の初期化関数
-  function attachFlatpickrWithReset(selector) {
+  function checkAndHide(instance, retries = 10) {
+    const dayContainer = instance.calendarContainer.querySelector(".dayContainer");
+    const days = dayContainer ? Array.from(dayContainer.querySelectorAll(".flatpickr-day")) : [];
+    if (days.length === 42) {
+      hideFullNextMonthWeek(instance);
+    } else if (retries > 0) {
+      requestAnimationFrame(() => checkAndHide(instance, retries - 1));
+    }
+  }
+
+  // 最終行が全て nextMonthDay なら非表示にする
+  function hideFullNextMonthWeek(instance) {
+    const dayContainer = instance.calendarContainer.querySelector(".dayContainer");
+    const days = Array.from(dayContainer.querySelectorAll(".flatpickr-day"));
+    
+    if (days.length !== 42) return;
+
+    const lastRowDays = days.slice(35, 42);
+
+    const currentMonth = instance.currentMonth + 1;
+    const currentYear = instance.currentYear;
+
+    const isAllNextMonth = lastRowDays.every(day => {
+      const ariaLabel = day.getAttribute("aria-label");
+      if (!ariaLabel) return false;
+      const match = ariaLabel.match(/^(\d+)月\s+(\d+),\s*(\d+)/);
+      if (!match) return false;
+      const month = parseInt(match[1], 10);
+      const year = parseInt(match[3], 10);
+      return (month !== currentMonth || year !== currentYear);
+    });
+
+    if (isAllNextMonth) {
+      lastRowDays.forEach(day => {
+        day.style.display = "none";
+      });
+    }
+  }
+
+  function attachFlatpickrWithReset(selector, modalId) {
     flatpickr(selector, {
       locale: "ja",
       dateFormat: "Y-m-d",
       clickOpens: false,
-      appendTo: document.getElementById('addRentalModal'),
+      showDaysInNextMonth: true,
+      appendTo: document.getElementById(modalId),
       onReady: function (selectedDates, dateStr, instance) {
         instance.input.addEventListener("click", function () {
-          if (instance.isOpen) {
-            instance.close();
-          } else {
-            instance.open();
-          }
+          instance.isOpen ? instance.close() : instance.open();
         });
 
         const resetBtn = document.createElement("button");
@@ -125,7 +160,7 @@
         resetBtn.className = "flatpickr-reset-button";
         resetBtn.style.position = "absolute";
         resetBtn.style.right = "10px";
-        resetBtn.style.bottom = "10px";
+        resetBtn.style.bottom = "15px";
 
         resetBtn.addEventListener("click", function () {
           instance.clear();
@@ -133,19 +168,24 @@
         });
 
         instance.calendarContainer.appendChild(resetBtn);
+        checkAndHide(instance);
+      },
+      onMonthChange: function (selectedDates, dateStr, instance) {
+        checkAndHide(instance);
       },
       onOpen: function(selectedDates, dateStr, instance) {
         instance.setDate(instance.input.value, false);
+        checkAndHide(instance);
       }
     });
   }
 
   // 開始日
-  attachFlatpickrWithReset("#addRentalStart");
+  attachFlatpickrWithReset("#addRentalStart", "addRentalModal");
 
   // 終了予定日
-  attachFlatpickrWithReset("#addRentalEnd");
+  attachFlatpickrWithReset("#addRentalEnd", "addRentalModal");
 
   // 返却日
-  attachFlatpickrWithReset("#addReturnDate");
+  attachFlatpickrWithReset("#addReturnDate", "addRentalModal");
 </script>
