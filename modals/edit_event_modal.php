@@ -113,7 +113,6 @@
     flatpickr(selector, {
       locale: "ja",
       dateFormat: "Y-m-d",
-      defaultDate: document.querySelector(selector).value,
       clickOpens: false,
       onReady: function (selectedDates, dateStr, instance) {
         instance.input.addEventListener("click", function () {
@@ -139,7 +138,6 @@
         instance.calendarContainer.appendChild(resetBtn);
       },
       onOpen: function(selectedDates, dateStr, instance) {
-        // input にセットされている日付を defaultDate に反映
         instance.setDate(instance.input.value, false);
       }
     });

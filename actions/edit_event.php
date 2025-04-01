@@ -3,7 +3,7 @@ include '../common/db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $eventId = $_POST['eventId'] ?? null;
+  $eventId = isset($_POST['eventId']) ? (int)$_POST['eventId'] : 0;
 
   if (isset($_POST['delete']) && $_POST['delete'] == '1') {
     try {
@@ -44,29 +44,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $returnDate = null;
     }
 
-    // overlap条件: NOT (既存.end < 新.start OR 既存.start > 新.end)
-    // → (既存.start <= 新.end) AND (既存.end >= 新.start) で重複
-    $overlapSql = "
-      SELECT COUNT(*) 
-      FROM hdd_rentals
-      WHERE deleted_at IS NULL
-        AND resource_id = ?
-        AND NOT (end < ? OR start > ?)
-        AND id <> ?
-    ";
-    try {
-      $stmtOverlap = $conn->prepare($overlapSql);
-      $stmtOverlap->execute([$resource_id, $start, $end, $eventId]);
-      $countOverlap = $stmtOverlap->fetchColumn();
+    $stmtCurrent = $conn->prepare("SELECT start, end FROM hdd_rentals WHERE id = ?");
+    $stmtCurrent->execute([$eventId]);
+    $current = $stmtCurrent->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$current || $current['start'] !== $start || $current['end'] !== $end) {
+      $overlapSql = "
+        SELECT COUNT(*) 
+        FROM hdd_rentals
+        WHERE deleted_at IS NULL
+          AND resource_id = ?
+          AND (start < ? AND end > ?)
+          AND id <> ?
+      ";
+      try {
+        $stmtOverlap = $conn->prepare($overlapSql);
+        $stmtOverlap->execute([$resource_id, $end, $start, $eventId]);
+        $countOverlap = $stmtOverlap->fetchColumn();
 
-      if ($countOverlap > 0) {
-        echo "⚠️ 設定し直してください！期間またはHDDが既存の予約と重複しています";
-        exit;
+        if ($countOverlap > 0) {
+          echo "⚠️ 設定し直してください！期間またはHDDが既存の予約と重複しています";
+          exit;
+        }
+      } catch (PDOException $e) {
+        error_log("オーバーラップチェックエラー: " . $e->getMessage());
+        echo "エラーが発生しました。";
+        exit();
       }
-    } catch (PDOException $e) {
-      error_log("オーバーラップチェックエラー: " . $e->getMessage());
-      echo "エラーが発生しました。";
-      exit();
     }
 
     try {
