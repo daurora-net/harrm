@@ -155,7 +155,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.text())
         .then(data => {
           if (data.trim() === 'OK') {
-            window.location.reload();
+            // 正常時 → モーダルを閉じ、カレンダーを更新して表示中の月を維持する
+            document.getElementById('addRentalModal').style.display = 'none';
+            if (window.calendar) {
+              window.calendar.refetchEvents();
+            }
           } else {
             // エラーをフォーム上表示 //
             addRentalErrorMessage.textContent = data;
