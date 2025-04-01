@@ -95,6 +95,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
     }
 
+    // 既存の is_returned も取得して、 返却済(1)→未返却(0) に変更する場合にも重複チェックを実施
+    $stmtCurrent = $conn->prepare("SELECT start, end, is_returned FROM hdd_rentals WHERE id = ?");
+    $stmtCurrent->execute([$eventId]);
+    $current = $stmtCurrent->fetch(PDO::FETCH_ASSOC);
+    
+    if (
+      (!$current || $current['start'] !== $start || $current['end'] !== $end || $current['is_returned'] == 1)
+      && $isReturned == 0
+    ) {
+      $overlapSql = "
+        SELECT COUNT(*) 
+        FROM hdd_rentals
+        WHERE deleted_at IS NULL
+          AND resource_id = ?
+          AND is_returned = 0
+          AND NOT (end < ? OR start > ?)
+          AND id <> ?
+      ";
+      try {
+        $stmtOverlap = $conn->prepare($overlapSql);
+        $stmtOverlap->execute([
+          $resource_id,
+          $start,
+          $end,
+          $eventId
+        ]);
+        $countOverlap = $stmtOverlap->fetchColumn();
+    
+        if ($countOverlap > 0) {
+          echo "⚠️ 設定し直してください！期間またはHDDが既存の予約と重複しています";
+          exit;
+        }
+      } catch (PDOException $e) {
+        error_log("オーバーラップチェックエラー: " . $e->getMessage());
+        echo "エラーが発生しました。";
+        exit();
+      }
+    }
+
     try {
       $stmt = $conn->prepare("UPDATE hdd_rentals 
                               SET title = ?, manager = ?, start = ?, end = ?, resource_id = ?,
