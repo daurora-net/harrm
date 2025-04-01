@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         FROM hdd_rentals
         WHERE deleted_at IS NULL
           AND resource_id = ?
+          AND is_returned = 0
           AND NOT (end < ? OR start > ?)
       ";
       $stmtOverlap = $conn->prepare($overlapSql);

@@ -48,21 +48,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmtCurrent->execute([$eventId]);
     $current = $stmtCurrent->fetch(PDO::FETCH_ASSOC);
     
-    if (!$current || $current['start'] !== $start || $current['end'] !== $end) {
+    if ((!$current || $current['start'] !== $start || $current['end'] !== $end) && !$isReturned) {
       $overlapSql = "
         SELECT COUNT(*) 
         FROM hdd_rentals
         WHERE deleted_at IS NULL
           AND resource_id = ?
-          AND (start < ? AND end > ?)
+          AND is_returned = 0
+          AND NOT (end < ? OR start > ?)
           AND id <> ?
       ";
       try {
         $stmtOverlap = $conn->prepare($overlapSql);
-        $stmtOverlap->execute([$resource_id, $end, $start, $eventId]);
+        $stmtOverlap->execute([$resource_id, $start, $end, $eventId]);
         $countOverlap = $stmtOverlap->fetchColumn();
 
         if ($countOverlap > 0) {
+          // $stmtOverlapDetails = $conn->prepare("
+          //   SELECT id, title, start, end
+          //   FROM hdd_rentals
+          //   WHERE deleted_at IS NULL
+          //     AND resource_id = ?
+          //     AND NOT (
+          //       IF(is_returned=1, return_date, end) < ?
+          //       OR start > ?
+          //     )
+          //     AND id <> ?
+          // ");
+          // $stmtOverlapDetails->execute([$resource_id, $start, $end, $eventId]);
+          // $overlaps = $stmtOverlapDetails->fetchAll(PDO::FETCH_ASSOC);
+        
+          // $overlapMsg = "⚠️ 設定し直してください！期間またはHDDが既存の予約と重複しています";
+          // foreach ($overlaps as $o) {
+          //   $overlapMsg .= "番組名「 {$o['title']}」 ({$o['start']}〜{$o['end']})";
+          // }
+        
+          // // 改行を <br> に変換して echo
+          // echo nl2br($overlapMsg);
           echo "⚠️ 設定し直してください！期間またはHDDが既存の予約と重複しています";
           exit;
         }

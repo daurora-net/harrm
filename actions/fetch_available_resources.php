@@ -30,6 +30,7 @@ if (!empty($startParam) && !empty($endParam)) {
           SELECT resource_id
           FROM hdd_rentals
           WHERE deleted_at IS NULL
+            AND is_returned = 0
             AND NOT (end < :start OR start > :end)
         )
       )
