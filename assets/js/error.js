@@ -71,7 +71,7 @@ const validateDateOrder = ({ startId, endId, returnId, endErrorId, returnErrorId
   if (returnInput && startInput && startInput.value && returnInput.value) {
     const startDate = new Date(startInput.value);
     const returnDate = new Date(returnInput.value);
-    if (returnDate <= startDate) {
+    if (returnDate < startDate) {
       const returnError = document.getElementById(returnErrorId);
       if (returnError) returnError.innerHTML = messages.return;
       isValid = false;
@@ -89,8 +89,8 @@ const validateRentalDateOrder = () =>
     endErrorId: 'rentalEndErrorMessage',
     returnErrorId: 'addReturnErrorMessage',
     messages: {
-      end: "⚠️ 開始日より後",
-      return: "⚠️ 開始日より後"
+      end: "⚠️ 開始日以降",
+      return: "⚠️ 開始日以降"
     }
   });
 
@@ -103,8 +103,8 @@ const validateEditEventDateOrder = () =>
     endErrorId: 'editEventEndErrorMessage',
     returnErrorId: 'editReturnErrorMessage',
     messages: {
-      end: "⚠️ 開始日より後",
-      return: "⚠️ 開始日より後"
+      end: "⚠️ 開始日以降",
+      return: "⚠️ 開始日以降"
     }
   });
 
