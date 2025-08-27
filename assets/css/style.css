@@ -272,15 +272,17 @@ button.login:hover {
 }
 
 /*========= logout ===============*/
-button.logout {
-  padding: 0 15px;
+button.logout a {
+  display: block;
   background: #fff;
   color: darkgray;
   border: 1px solid #fff;
+  border-radius: 5px;
   height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
 }
-
-button.logout:hover {
+button.logout a:hover {
   background: darkgray;
   color: #fff;
   border: 1px solid darkgray;
