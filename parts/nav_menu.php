@@ -42,8 +42,8 @@ $userRole = $stmt->fetchColumn();
         </li>
       <?php }
 
-      // 料金 (role=3) のみ表示（billing_list ページ）
-      if ($userRole == 3) { ?>
+      // 料金 (role=1 管理者, role=3 料金) に表示（billing_list ページ）
+      if (in_array($userRole, [1, 3])) { ?>
         <li class="list <?php echo (isset($activePage) && $activePage == 'billing_list') ? 'active' : ''; ?>">
           <a href="billing_list">
             <span class="icon">BILLING</span>

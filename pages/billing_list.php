@@ -8,8 +8,8 @@ $stmtRole = $conn->prepare("SELECT role FROM users WHERE username = ?");
 $stmtRole->execute([$_SESSION['username']]);
 $currentUserRole = $stmtRole->fetchColumn();
 
-// role=3のみアクセス可能
-if ($currentUserRole != 3) {
+// role=1,3のみアクセス可能
+if (!in_array($currentUserRole, [1, 3])) {
   header("Location: /harrm/");
   exit();
 }
